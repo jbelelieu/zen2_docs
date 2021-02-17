@@ -68,11 +68,23 @@ Free to manually deploy
 Premium Services
 - Ads on the website via CARBON:
   - https://www.carbonads.net/open-source
-- LTS on various versions- Professional installation + deployment  - Junior: shared hosting  - Mid: Heroku-style deployment  - Senior: Cloud-based deployment
-- Access to premium plugins (one time fee)- Access to SaaS-based deployments (cost based on deploy infra size)  - Junior: Standard deployment, DB-based caching  - Mid: ...  - Senior: Redis, ES, etc.. Queue-based communications.
-Custom plugin creation
-Custom Integrations
-On-site/custom trainings
+- LTS on various versions- Professional installation + deployment
+	- Junior: shared hosting
+	- Mid: Heroku-style deployment
+	- Senior: Cloud-based deployment
+- 
+- Access to premium plugins (one time fee)
+	- Access to SaaS-based deployments (cost based on deploy infra size)
+		- Junior: Standard deployment, DB-based caching
+		- Mid: ...
+		- Senior: Redis, ES, etc.. Queue-based communications.
+- Custom plugin creation
+- Custom Integrations
+- On-site/custom trainings
+	- General Training
+	- Scaling consultations for largers companies
+- Backups
+- We will import/export your data for you!
 
 Monetize into an all in one online sales platform
 - Widgets for onsite inclusion

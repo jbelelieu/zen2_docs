@@ -13,11 +13,23 @@
     - Need to see why that isn't working...
 - I can't update ID for an invoice...
     - DTO setId is called when controller passed DTO to service.
+- SMS not working?
 
 # TODO
 
-- Given that we've added tabs to the FE, we can assume that the LIST / GET methods don't need everything that the
-  getEntity() returns by default. We need a setting to say "JUST THIS PRIMARY ENTITY".
+- TODO: ON ALL RESOURCE SERVICES:
+    - Create/Update logic around notifying users.
+
+- Source tracking on login!
+
+- Import/Export
+
+- Backups
+
+- member announcements?
+
+- Bounced email tracking
+- Email open tracking
 
 - Licenses/dig files: current version for "am I up to date".
     - Maybe licensing is going too far eh... is this a licenseing platform?

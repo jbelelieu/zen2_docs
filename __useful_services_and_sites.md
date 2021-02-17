@@ -1,10 +1,4 @@
 
-# POSSIBLE ADMIN PANELS
-
-https://github.com/tabler/tabler-react
-https://github.com/0wczar/airframe-react
-https://www.creative-tim.com/product/notus-react
-
 # GUIDES
 
 https://www.reddit.com/r/webdev/comments/las3p9/really_helpful_tips_to_improve_a_websites_looks/
@@ -14,6 +8,10 @@ https://www.reddit.com/r/webdev/comments/las3p9/really_helpful_tips_to_improve_a
         - Halant & Nunito Sans
         - Saira
         - Merriweather
+
+# REACH OUT TO HIGH FOLLOWER TWITTER ACCOUNTS TO SPREAD THE WORD
+- product hunt
+- 
 
 # INTEGRATIONS
 
@@ -28,6 +26,11 @@ https://www.reddit.com/r/webdev/comments/las3p9/really_helpful_tips_to_improve_a
     - Resources
     - Helped with creating quality abstractions
 
+# Donate to open source projects that list you on their sites
+- ...
+
+## Flip side, list people who donate to zen2!
+
 # SEEK FUNDING
 
 - https://github.com/sustainers/awesome-oss-funding
@@ -40,11 +43,16 @@ https://www.reddit.com/r/webdev/comments/las3p9/really_helpful_tips_to_improve_a
 
 # MARKETING WEBSITES 
 
+https://www.google.com/search?q=zenbership+demo&oq=zenbership+demo&aqs=chrome.0.69i59j69i65j69i60l3.1457j0j7&sourceid=chrome&ie=UTF-8
+
 Search google for old listings and get them updated to zenbership.org.
 - Software Suggest
     - https://www.softwaresuggest.com/us/zenbership
--  
-
+- https://thegeekpage.com/
+    - https://thegeekpage.com/open-source-membership-management-software/
+- https://www.opensourcecms.com/zenbership/
+- Alternatives To
+    - Add Zenbership to every possible membership platform
 - Contact various podcasters:
     - http://5by5.tv/contact
     - https://changelog.com/

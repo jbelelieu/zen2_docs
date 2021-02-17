@@ -89,7 +89,9 @@
 	- You don't need 100% coverage, but
 	- You should absolute have code coverage against core functionality
 		- Core functionality is defined as anything that if it failed, would cost your customers users/money.
-
+- When coding, focus on how what you're building could be chopped off and released as its own package.
+	- Where different clients will use the same code, release those as their own packages.
+- Code should be selfdocumenting as much as possible, but where that isn't possible, leave notes explaining the decision making process.
 
 ## Take breaks and Shift focus
 
@@ -112,7 +114,6 @@
 	- User documentation for non-technical people
 		- As a developer, very strongly consider outsourcing this to someone who can communicate in a non-technical way.
 	- Consider making video tutorials.
-- 
 
 
 ## Beta Release!
