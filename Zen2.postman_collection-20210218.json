@@ -1,0 +1,7424 @@
+{
+	"info": {
+		"_postman_id": "d220c43c-8808-4182-b6a7-88a562da6ab4",
+		"name": "Zen2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ADMIN",
+			"item": [
+				{
+					"name": "Cart",
+					"item": [
+						{
+							"name": "Coupons",
+							"item": [
+								{
+									"name": "Get",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api}}/admin/coupon/10OFF",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"admin",
+												"coupon",
+												"10OFF"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get All (All Filters)",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api}}/admin/coupon?page=1&size=20&direction=desc&orderBy=created_at&filter[product.1]===free_membership&filter[member_group.1]===2",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"admin",
+												"coupon"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "size",
+													"value": "20"
+												},
+												{
+													"key": "direction",
+													"value": "desc"
+												},
+												{
+													"key": "orderBy",
+													"value": "created_at"
+												},
+												{
+													"key": "filter[created_at.1]",
+													"value": ">=2021-02-01",
+													"disabled": true
+												},
+												{
+													"key": "filter[updated_at.1]",
+													"value": ">=2021-02-01",
+													"disabled": true
+												},
+												{
+													"key": "filter[discount_type.1]",
+													"value": "==FIXED",
+													"disabled": true
+												},
+												{
+													"key": "filter[max_uses.1]",
+													"value": ">>0",
+													"disabled": true
+												},
+												{
+													"key": "filter[ends_at.1]",
+													"value": ">=2021-03-01",
+													"disabled": true
+												},
+												{
+													"key": "filter[starts_at.1]",
+													"value": ">=2021-02-10",
+													"disabled": true
+												},
+												{
+													"key": "filter[product.1]",
+													"value": "==free_membership"
+												},
+												{
+													"key": "filter[member_group.1]",
+													"value": "==2"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Filters",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api}}/admin/coupon/filters",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"admin",
+												"coupon",
+												"filters"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"10OFFNEWMEMBER3\",\n    \"discount\": 1000,\n    \"discountType\": \"PERCENT\",\n    \"startsAt\": \"2021-05-13\",\n    \"endsAt\": \"2022-05-13\",\n    \"maxUses\": 10,\n    \"products\": [\"free_membership\", \"premium_membership\"],\n    \"memberGroups\": [\"2\"]\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/admin/coupon",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"admin",
+												"coupon"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"discount\": 2000,\n    \"discountType\": \"FIXED\",\n    \"startsAt\": \"2022-05-13\",\n    \"endsAt\": \"2023-05-13\",\n    \"maxUses\": 100,\n    \"products\": [\"premium_membership\"],\n    \"memberGroups\": []\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/admin/coupon/10OFFNEWMEMBER1",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"admin",
+												"coupon",
+												"10OFFNEWMEMBER1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{api}}/admin/coupon/ID_HERE",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"admin",
+												"coupon",
+												"ID_HERE"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "acb9a67a-9db2-44bf-ba72-9c8428bd8506",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "9fc496bb-926c-4ea5-8518-a11ec80fbac0",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Cart Components",
+							"item": [
+								{
+									"name": "Get All",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api}}/admin/cartComponent?page=1&size=20&direction=desc&orderBy=created_at&filter[cart_id]===JB19840513",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"admin",
+												"cartComponent"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "size",
+													"value": "20"
+												},
+												{
+													"key": "direction",
+													"value": "desc"
+												},
+												{
+													"key": "orderBy",
+													"value": "created_at"
+												},
+												{
+													"key": "filter[cart_id]",
+													"value": "==JB19840513"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"cartId\": \"JB19840513\",\n    \"productId\": \"premium_membership\",\n    \"qty\": 10\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/admin/cartComponent",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"admin",
+												"cartComponent"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Filters",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api}}/admin/cartComponent/filters",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"admin",
+												"cartComponent",
+												"filters"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"qty\": 88\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/admin/cartComponent/1",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"admin",
+												"cartComponent",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{api}}/admin/cartComponent/1",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"admin",
+												"cartComponent",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "d2be4b9d-650f-476a-a53b-7896a7ac86cc",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "5b779b6e-1c7f-4b65-b93c-8dcccd58733c",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Cart Total",
+							"item": [
+								{
+									"name": "Get All",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api}}/admin/cartTotals?page=1&size=20&direction=desc&orderBy=created_at&filter[cart_id]=JB19840513",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"admin",
+												"cartTotals"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "size",
+													"value": "20"
+												},
+												{
+													"key": "direction",
+													"value": "desc"
+												},
+												{
+													"key": "orderBy",
+													"value": "created_at"
+												},
+												{
+													"key": "filter[cart_id]",
+													"value": "JB19840513"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "bd025feb-f761-4591-b1ba-1574cf6e4736",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "dcb6ed9f-bdc5-4ceb-84cd-1473603a12d2",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/cart/JB19840513",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"cart",
+										"JB19840513"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All (All Filters)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/cart?page=1&size=20&direction=desc&orderBy=created_at&filter[user_id.1]===1&filter[has_product.1]===sample_hourly_product&filter[status.1]===ABANDONNED,ACTIVE,SHIT&filter[source.1]===INVOICE&filter[value.1]=>>100",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"cart"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										},
+										{
+											"key": "direction",
+											"value": "desc"
+										},
+										{
+											"key": "orderBy",
+											"value": "created_at"
+										},
+										{
+											"key": "filter[user_id.1]",
+											"value": "==1"
+										},
+										{
+											"key": "filter[has_product.1]",
+											"value": "==sample_hourly_product"
+										},
+										{
+											"key": "filter[coupon_code.1]",
+											"value": "==1",
+											"disabled": true
+										},
+										{
+											"key": "filter[subscription_id.1]",
+											"value": "==14351d99-6718-448f-addd-a2ebf0d384e1",
+											"disabled": true
+										},
+										{
+											"key": "filter[status.1]",
+											"value": "==ABANDONNED,ACTIVE,SHIT"
+										},
+										{
+											"key": "filter[source.1]",
+											"value": "==INVOICE"
+										},
+										{
+											"key": "filter[value.1]",
+											"value": ">>100"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filters",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/cart/filters",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"cart",
+										"filters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"couponCodeId\": \"\",\n    \"status\": \"ACTIVE\",\n    \"userId\": 1,\n    \"userSubscriptionId\": \"\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/cart",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"cart"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"couponCodeId\": \"\",\n    \"status\": \"\",\n    \"userId\": 1,\n    \"userSubscriptionId\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/cart/JB19840513",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"cart",
+										"JB19840513"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/cart/JB19840513",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"cart",
+										"JB19840513"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8081c945-034a-43bf-80c0-3144cf471aad",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2d6dcca3-87b0-4967-84d0-0945b861bce2",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Digital File",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/digitalFile?page=1&size=20&direction=desc&orderBy=created_at&filter[name.1]=~~Example",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"digitalFile"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										},
+										{
+											"key": "direction",
+											"value": "desc"
+										},
+										{
+											"key": "orderBy",
+											"value": "created_at"
+										},
+										{
+											"key": "filter[name.1]",
+											"value": "~~Example"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get One",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/digitalFile/b7b6668a-5b6c-481c-8d2d-06d4e95a9756",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"digitalFile",
+										"b7b6668a-5b6c-481c-8d2d-06d4e95a9756"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filters",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/digitalFile/filters",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"digitalFile",
+										"filters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test File\",\n    \"description\": \"My description\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/digitalFile",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"digitalFile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test File Renamed\",\n    \"description\": \"My much longer but still pointless description.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/digitalFile/18f554d8-2589-462a-82f3-682ebb4577b1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"digitalFile",
+										"18f554d8-2589-462a-82f3-682ebb4577b1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upload File",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/Users/jonbelelieu1/Pictures/41414828.jpg"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/digitalFile/18f554d8-2589-462a-82f3-682ebb4577b1/file",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"digitalFile",
+										"18f554d8-2589-462a-82f3-682ebb4577b1",
+										"file"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/digitalFile/18f554d8-2589-462a-82f3-682ebb4577b1,b7b6668a-5b6c-481c-8d2d-06d4e95a9756",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"digitalFile",
+										"18f554d8-2589-462a-82f3-682ebb4577b1,b7b6668a-5b6c-481c-8d2d-06d4e95a9756"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9134529e-4cc0-4424-90b4-d2efb8fb3242",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a701a665-5c14-41cc-a09e-7a62e258eb56",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Download",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/download?page=1&size=20&direction=desc&orderBy=created_at&filter[digital_file_id.1]===e3d8abde-5f7f-4a09-ac89-09cc1c4f5e65",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"download"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										},
+										{
+											"key": "direction",
+											"value": "desc"
+										},
+										{
+											"key": "orderBy",
+											"value": "created_at"
+										},
+										{
+											"key": "filter[digital_file_id.1]",
+											"value": "==e3d8abde-5f7f-4a09-ac89-09cc1c4f5e65"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get One",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/download/1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"download",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filters",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/download/filters",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"download",
+										"filters"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a05f7af2-131d-48b3-8558-8b97540da6cc",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "02c01957-6e2f-44d0-952a-837c175c0930",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Geo",
+					"item": [
+						{
+							"name": "City",
+							"item": [
+								{
+									"name": "Get All (All Filters)",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api}}/admin/geoCity?page=1&size=20&direction=desc&orderBy=name&filter[name]=~~New",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"admin",
+												"geoCity"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "size",
+													"value": "20"
+												},
+												{
+													"key": "direction",
+													"value": "desc"
+												},
+												{
+													"key": "orderBy",
+													"value": "name"
+												},
+												{
+													"key": "filter[name]",
+													"value": "~~New"
+												},
+												{
+													"key": "filter[state]",
+													"value": "3566",
+													"disabled": true
+												},
+												{
+													"key": "filter[country]",
+													"value": "240",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api}}/admin/geoCity/1",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"admin",
+												"geoCity",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{api}}/admin/geoCity/10,11",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"admin",
+												"geoCity",
+												"10,11"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "ae95d655-f25d-4c51-aebd-d7cae6924757",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "b898c256-f525-4cc1-9ae1-7b38baa73c6c",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/geo/1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"geo",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All (All Filters)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/geo?page=1&size=20&direction=desc&orderBy=created_at&filter[user_id]=1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"geo"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										},
+										{
+											"key": "direction",
+											"value": "desc"
+										},
+										{
+											"key": "orderBy",
+											"value": "created_at"
+										},
+										{
+											"key": "filter[user_id]",
+											"value": "1"
+										},
+										{
+											"key": "filter[entity_type]",
+											"value": "INVOICE",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filters",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/geo/filters",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"geo",
+										"filters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"addressLine1\": \"216 Beverly Street\",\n    \"addressLine2\": \"Unit 9\",\n    \"cityId\": \"Toronto\",\n    \"stateId\": \"449\",\n    \"postal\": \"M5T1Z3\",\n    \"countryId\": 43,\n    \"isPrimary\": \"0\",\n    \"type\": \"HOME\",\n    \"userId\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/geo",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"geo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"addressLine1\": \"216 Beverly St\",\n    \"addressLine2\": \"Unit 3\",\n    \"cityId\": 109,\n    \"stateId\": 449,\n    \"postal\": \"M5T1Z9\",\n    \"countryId\": 43,\n    \"isPrimary\": \"0\",\n    \"type\": \"HOME\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/geo/105",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"geo",
+										"105"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/geo/18",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"geo",
+										"18"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Grant",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/grant?page=1&size=20&direction=desc&orderBy=created_at&filter[type.1]===DIGITAL_FILE&filter[license_key.1]=~~LG568&filter[seats.1]=>>0",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"grant"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										},
+										{
+											"key": "direction",
+											"value": "desc"
+										},
+										{
+											"key": "orderBy",
+											"value": "created_at"
+										},
+										{
+											"key": "filter[created_at.1]",
+											"value": ">=2021-01-01",
+											"disabled": true
+										},
+										{
+											"key": "filter[updated_at.1]",
+											"value": ">=2021-02-01",
+											"disabled": true
+										},
+										{
+											"key": "filter[type.1]",
+											"value": "==DIGITAL_FILE"
+										},
+										{
+											"key": "filter[license_key.1]",
+											"value": "~~LG568"
+										},
+										{
+											"key": "filter[seats.1]",
+											"value": ">>0"
+										},
+										{
+											"key": "filter[expires_at.1]",
+											"value": ">>2021-02-01",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get One",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/grant/1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"grant",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filters",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/grant/filters",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"grant",
+										"filters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/grant",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"grant"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/grant/1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"grant",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/grant/2",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"grant",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9140b6a6-41c9-4f71-9550-76cd73be14d7",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "b392310d-1eaf-4795-8087-86759a471e7d",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Group",
+					"item": [
+						{
+							"name": "Get All (All Filters)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/group?page=1&size=20&direction=asc&orderBy=name",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"group"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										},
+										{
+											"key": "direction",
+											"value": "asc"
+										},
+										{
+											"key": "orderBy",
+											"value": "name"
+										},
+										{
+											"key": "filter[name.1]",
+											"value": "~~Admin",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filters",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/group/filters",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"group",
+										"filters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/group/1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"group",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"My New Group\",\n    \"digitalFiles\": [\n        \"58e973ce-6a27-4cfe-a5d0-9ebbc7b32e08\"\n    ],\n    \"memberGroups\": [\n        \"2\"\n    ],\n    \"sessions\": 10,\n    \"updatableFields\": [\n        \"first_name\",\n        \"last_name\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/group",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"group"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"My New Group Renamed\",\n    \"digitalFiles\": [\n        \"58e973ce-6a27-4cfe-a5d0-9ebbc7b32e08\",\n        \"e3d8abde-5f7f-4a09-ac89-09cc1c4f5e65\"\n    ],\n    \"memberGroups\": [\n        \"2\",\n        \"3\"\n    ],\n    \"sessions\": 10,\n    \"updatableFields\": [\n        \"first_name\",\n        \"last_name\",\n        \"company_industry\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/group/5",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"group",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/group/5",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"group",
+										"5"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "245020f7-bbe1-4cc8-950c-4995bf7de0ea",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "7aab0103-ffdd-4c2d-a32d-5fff2560ebdb",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Invoice",
+					"item": [
+						{
+							"name": "Redirect To",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/redirect/invoice/CASTLAMP-YOURORG-CONSULTING",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"redirect",
+										"invoice",
+										"CASTLAMP-YOURORG-CONSULTING"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/invoice?page=1&size=20&direction=desc&orderBy=created_at",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"invoice"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										},
+										{
+											"key": "filter[invoice_status]",
+											"value": "UNSETTLED",
+											"disabled": true
+										},
+										{
+											"key": "filter[created_at.1]",
+											"value": ">>2021-01-01",
+											"disabled": true
+										},
+										{
+											"key": "filter[created_at.2]",
+											"value": "<<2021-03-01",
+											"disabled": true
+										},
+										{
+											"key": "filter[updated_at]",
+											"value": ">=2021-01-01",
+											"disabled": true
+										},
+										{
+											"key": "filter[invoice_due_at]",
+											"value": "2021-03-01",
+											"disabled": true
+										},
+										{
+											"key": "filter[invoice_bill_to]",
+											"value": "~~Organization",
+											"disabled": true
+										},
+										{
+											"key": "filter[country]",
+											"value": "240",
+											"disabled": true
+										},
+										{
+											"key": "filter[state]",
+											"value": "3566",
+											"disabled": true
+										},
+										{
+											"key": "filter[city]",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "direction",
+											"value": "desc"
+										},
+										{
+											"key": "orderBy",
+											"value": "created_at"
+										},
+										{
+											"key": "filter[invoice_total]",
+											"value": ">>1000",
+											"disabled": true
+										},
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get One",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/invoice/CASTLAMP-YOURORG-CONSULTING",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"invoice",
+										"CASTLAMP-YOURORG-CONSULTING"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filters",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/invoice/filters",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"invoice",
+										"filters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"memo\": \"Testing\",\n    \"billToParty\": \"Test test\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/invoice/CASTLAMP-YOURORG-CONSULTING",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"invoice",
+										"CASTLAMP-YOURORG-CONSULTING"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"billToParty\": \"Some dude\",\n    \"cartId\": \"Testing\",\n    \"dueAt\": \"2021-03-05\",\n    \"memo\": \"Just a testing invoice\",\n    \"userId\": 1,\n    \"fake\": \"efe\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/invoice",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"invoice"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Resend Email",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/invoice/email/CASTLAMP-YOURORG-CONSULTING",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"invoice",
+										"email",
+										"CASTLAMP-YOURORG-CONSULTING"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/invoice/2",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"invoice",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "fa5d5cb8-05ec-4972-88a5-b0f77b09d372",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "7ddfa9b3-f78f-4bc5-8977-1d80f2a0d353",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Log",
+					"item": [
+						{
+							"name": "Get All (All Filters)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/log?page=1&size=20&direction=desc&orderBy=created_at&filter[user_id.1]===1&filter[task_key.1]===SourceTrackingService.list&filter[task_scope.1]===Admin&filter[created_at.1]=>>2020-02-17&filter[is_completed.1]===1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"log"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										},
+										{
+											"key": "direction",
+											"value": "desc"
+										},
+										{
+											"key": "orderBy",
+											"value": "created_at"
+										},
+										{
+											"key": "filter[user_id.1]",
+											"value": "==1"
+										},
+										{
+											"key": "filter[task_key.1]",
+											"value": "==SourceTrackingService.list"
+										},
+										{
+											"key": "filter[task_scope.1]",
+											"value": "==Admin"
+										},
+										{
+											"key": "filter[created_at.1]",
+											"value": ">>2020-02-17"
+										},
+										{
+											"key": "filter[is_completed.1]",
+											"value": "==1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/log/a9589793-2212-4185-89dd-89b94619711e",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"log",
+										"a9589793-2212-4185-89dd-89b94619711e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filters",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/log/filters",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"log",
+										"filters"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "24218c48-6594-4206-9d09-4310a9f5dc91",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "12590966-c56b-4c51-b590-fb1c5ca70949",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Note",
+					"item": [
+						{
+							"name": "Get All (All Filters)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/note?page=1&size=20&direction=desc&orderBy=created_at&filter[entity_id]=1&filter[entity_type]=USER",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"note"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										},
+										{
+											"key": "direction",
+											"value": "desc"
+										},
+										{
+											"key": "orderBy",
+											"value": "created_at"
+										},
+										{
+											"key": "filter[entity_id]",
+											"value": "CASTLAMP-YOURORG-CONSULTING",
+											"disabled": true
+										},
+										{
+											"key": "filter[entity_type]",
+											"value": "INVOICE",
+											"disabled": true
+										},
+										{
+											"key": "filter[entity_id]",
+											"value": "1"
+										},
+										{
+											"key": "filter[entity_type]",
+											"value": "USER"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/note/4",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"note",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"note\": \"Testing out this note thing.\",\n    \"entityId\": \"CASTLAMP-YOURORG-CONSULTING\",\n    \"entityType\": \"INVOICE\",\n    \"isPinned\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/note",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"note"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/note/3",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"note",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2667d75d-1438-4bc5-8178-f80ccace6663",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a9dd209b-6a3b-4530-880d-6150f3f0be08",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/product?page=1&size=20&direction=desc&orderBy=created_at&filter[active]===true&filter[name]=~>free",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"product"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										},
+										{
+											"key": "direction",
+											"value": "desc"
+										},
+										{
+											"key": "orderBy",
+											"value": "created_at"
+										},
+										{
+											"key": "filter[active]",
+											"value": "==true"
+										},
+										{
+											"key": "filter[name]",
+											"value": "~>free"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get One",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/product/1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"product",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filters",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/product/filters",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"product",
+										"filters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Testing\",\n    \"description\": \"I'm just testing this\",\n    \"cost\": 100,\n    \"maxRenewals\": 99\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/product",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"afwefjwaifwofwoeijfio\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/product/1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"product",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/product/999",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"product",
+										"999"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "594db0e1-7f4d-401d-ae64-798d38e275db",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "7aa66c93-5642-4bea-8b73-203961663cc1",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Report",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/report?page=1&size=20&direction=desc&orderBy=created_at&filter[is_favorite.1]===true",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"report"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										},
+										{
+											"key": "direction",
+											"value": "desc"
+										},
+										{
+											"key": "orderBy",
+											"value": "created_at"
+										},
+										{
+											"key": "filter[created_at.1]",
+											"value": ">=2021-01-01",
+											"disabled": true
+										},
+										{
+											"key": "filter[updated_at.1]",
+											"value": "<<2022-01-01",
+											"disabled": true
+										},
+										{
+											"key": "filter[report_scope.1]",
+											"value": "==USER",
+											"disabled": true
+										},
+										{
+											"key": "filter[is_public.1]",
+											"value": "==false",
+											"disabled": true
+										},
+										{
+											"key": "filter[is_favorite.1]",
+											"value": "==true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get One",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/report/1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"report",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filters",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/report/filters",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"report",
+										"filters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"isPublic\": \"1\",\n    \"isFavorite\": \"1\",\n    \"metadata\": [\n        {\n            \"name\": \"email.1\",\n            \"comparison\": \"~~\",\n            \"value\": \"jon\"\n        }\n    ],\n    \"name\": \"Test Report\",\n    \"scope\": \"USER\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/report",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"report"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"isPublic\": \"1\",\n    \"isFavorite\": \"1\",\n    \"payload\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/report/1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"report",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/report/1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"report",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "73db71f1-120e-4f78-b0d9-736b80bb2446",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "88ede3a9-17ad-4a25-b586-395a65eb0438",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Session",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/session?page=1&size=20&direction=desc&orderBy=created_at&filter[created_at.1]=>=2021-01-01&filter[updated_at.1]=>=2021-02-01&filter[type.1]===ONLINE,GUEST",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"session"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										},
+										{
+											"key": "direction",
+											"value": "desc"
+										},
+										{
+											"key": "orderBy",
+											"value": "created_at"
+										},
+										{
+											"key": "filter[created_at.1]",
+											"value": ">=2021-01-01"
+										},
+										{
+											"key": "filter[ip.1]",
+											"value": "~~123.12",
+											"disabled": true
+										},
+										{
+											"key": "filter[updated_at.1]",
+											"value": ">=2021-02-01"
+										},
+										{
+											"key": "filter[type.1]",
+											"value": "==ONLINE,GUEST"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get One",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/session/c237aa5fdce7a294ad2aa22f8b22e5",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"session",
+										"c237aa5fdce7a294ad2aa22f8b22e5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filters",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/session/filters",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"session",
+										"filters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"isPublic\": \"1\",\n    \"isFavorite\": \"1\",\n    \"metadata\": [\n        {\n            \"name\": \"email.1\",\n            \"comparison\": \"~~\",\n            \"value\": \"jon\"\n        }\n    ],\n    \"name\": \"Test Report\",\n    \"scope\": \"USER\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/session",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"session"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"isPublic\": \"1\",\n    \"isFavorite\": \"1\",\n    \"payload\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/session/1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"session",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/session/1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"session",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ac3a2dce-e378-4f6d-be49-e8a90b122c8b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "8f72120d-5f51-4a16-9ca4-c4d3a3f03761",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Source",
+					"item": [
+						{
+							"name": "Get All (All Filters)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/source?page=1&size=20&direction=asc&orderBy=name",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"source"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										},
+										{
+											"key": "direction",
+											"value": "asc"
+										},
+										{
+											"key": "orderBy",
+											"value": "name"
+										},
+										{
+											"key": "filter[name.1]",
+											"value": "~~Admin",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/source/1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"source",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Ascad Networks\",\n    \"redirect\": \"/ascad\",\n    \"tag\": \"ascad\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/source",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"source"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Ascad Networks\",\n    \"redirect\": \"/ascadin\",\n    \"tag\": \"ascadnetworks\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/source/5",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"source",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/source/3",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"source",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "98f337b2-2ff2-473b-8b8c-9cc9ee541f88",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4d92a9b4-6963-48ad-a963-9e761c271ae2",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Source Tracking",
+					"item": [
+						{
+							"name": "Get All (All Filters)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/sourceTracking?page=1&size=20&direction=desc&orderBy=created_at",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"sourceTracking"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										},
+										{
+											"key": "direction",
+											"value": "desc"
+										},
+										{
+											"key": "orderBy",
+											"value": "created_at"
+										},
+										{
+											"key": "filter[name.1]",
+											"value": "~~Admin",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/sourceTracking/1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"sourceTracking",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"convertedAt\": \"2021-02-17\",\n    \"sourceId\": 1,\n    \"userId\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/sourceTracking",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"sourceTracking"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/sourceTracking/3",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"sourceTracking",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4af5de24-d780-4d23-bcd4-a849eed0c6b8",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "50a0876e-b671-48da-abfb-c1ffe624fd5e",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Subscription",
+					"item": [
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/subscription/14351d99-6718-448f-addd-a2ebf0d384e1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"subscription",
+										"14351d99-6718-448f-addd-a2ebf0d384e1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All (All Filters)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/subscription?page=1&size=20&direction=desc&orderBy=created_at&filter[user_id.1]===1&filter[created_at.1]=>=2020-01-01&filter[renews_at.1]=>=2020-02-12",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"subscription"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										},
+										{
+											"key": "direction",
+											"value": "desc"
+										},
+										{
+											"key": "orderBy",
+											"value": "created_at"
+										},
+										{
+											"key": "filter[user_id.1]",
+											"value": "==1"
+										},
+										{
+											"key": "filter[created_at.1]",
+											"value": ">=2020-01-01"
+										},
+										{
+											"key": "filter[renews_at.1]",
+											"value": ">=2020-02-12"
+										},
+										{
+											"key": "filter[canceled_at.1]",
+											"value": ">=2020-02-10",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filters",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/subscription/filters",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"subscription",
+										"filters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/subscription",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"subscription"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/subscription/1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"subscription",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/subscription/2",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"subscription",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "799f6f8a-c6e1-4b4e-af77-143c5cd25a91",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "cca892ad-f6cd-4a37-8e7f-b8f67527a86e",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Type",
+					"item": [
+						{
+							"name": "Get All (All Filters)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/type?page=1&size=20&direction=asc&orderBy=name&filter[name.1]=~~member&filter[level.1]=>>50",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"type"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										},
+										{
+											"key": "direction",
+											"value": "asc"
+										},
+										{
+											"key": "orderBy",
+											"value": "name"
+										},
+										{
+											"key": "filter[name.1]",
+											"value": "~~member"
+										},
+										{
+											"key": "filter[level.1]",
+											"value": ">>50"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/type/1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"type",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"level\": 250,\n    \"permissions\": [\"user.list\", \"user.get\"],\n    \"name\": \"New Type Test\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/type",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"type"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"level\": 255,\n    \"permissions\": [\"user.list\", \"user.get\", \"user.create\"],\n    \"name\": \"Rename Test Type\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/type/7",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"type",
+										"7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/source/3",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"source",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0b056847-5e8d-4431-bb65-2e9bcdef8dd6",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "00a53554-e144-40a7-800b-eb2d8a17f656",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/user?page=1&size=25&filter[email]=~~jon&direction=desc&orderBy=created_at",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"user"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "25"
+										},
+										{
+											"key": "filter[grant]",
+											"value": "DIGITAL_FILE,d2f9c543-5ec7-4746-9967-93b8a66b0eb1",
+											"disabled": true
+										},
+										{
+											"key": "filter[first_name]",
+											"value": "~~super",
+											"disabled": true
+										},
+										{
+											"key": "filter[email]",
+											"value": "~~jon"
+										},
+										{
+											"key": "filter[income_generated.1]",
+											"value": ">=10",
+											"disabled": true
+										},
+										{
+											"key": "filter[sessions]",
+											"value": ">=ONLINE,1",
+											"disabled": true
+										},
+										{
+											"key": "filter[user_subscription]",
+											"value": "basic_membership",
+											"disabled": true
+										},
+										{
+											"key": "filter[state]",
+											"value": "3566",
+											"disabled": true
+										},
+										{
+											"key": "filter[city]",
+											"value": "1,2",
+											"disabled": true
+										},
+										{
+											"key": "filter[country]",
+											"value": "240",
+											"disabled": true
+										},
+										{
+											"key": "filter[purchase]",
+											"value": "basic_membership",
+											"disabled": true
+										},
+										{
+											"key": "filter[source]",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "filter[user.type]",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "filter[user_data.1]",
+											"value": "company_industry,Computer Software",
+											"disabled": true
+										},
+										{
+											"key": "filter[user_data.2]",
+											"value": "~~company_name,castlamp",
+											"disabled": true
+										},
+										{
+											"key": "filter[income_generated.2]",
+											"value": "<=900",
+											"disabled": true
+										},
+										{
+											"key": "filter[created_at.1]",
+											"value": ">=2020-01-01",
+											"disabled": true
+										},
+										{
+											"key": "filter[created_at.2]",
+											"value": "<=2020-03-01",
+											"disabled": true
+										},
+										{
+											"key": "filter[sessions_date]",
+											"value": ">=2020-01-0",
+											"disabled": true
+										},
+										{
+											"key": "direction",
+											"value": "desc"
+										},
+										{
+											"key": "orderBy",
+											"value": "created_at"
+										},
+										{
+											"key": "filter[user_status]",
+											"value": "ACTIVE",
+											"disabled": true
+										},
+										{
+											"key": "filter[mfa_enabled]",
+											"value": "NONE",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/user/3",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"user",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filters",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/user/filters",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"user",
+										"filters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"someguy123122\",\n    \"password\": \"Testing\",\n    \"last_name\": \"Jonathan\",\n    \"first_name\": \"Belliiiiiouuuuuu\",\n    \"type_id\": 3,\n    \"email\": \"jonnyobell+099@gmail.com\",\n    \"country_code\": 1,\n    \"phone\": 6307061574\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/user",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"status\": \"ACTIVE\",\n    \"reason\": \"Testing\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/user/2/status",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"user",
+										"2",
+										"status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Security Code",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/user/1/securityCode",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"user",
+										"1",
+										"securityCode"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/user/1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"user",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "User Billing",
+					"item": [
+						{
+							"name": "Get All (All Filters)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/userBilling?page=1&size=20&direction=desc&orderBy=created_at&filter[type.1]===VISA,MASTERCARD",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"userBilling"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										},
+										{
+											"key": "direction",
+											"value": "desc"
+										},
+										{
+											"key": "orderBy",
+											"value": "created_at"
+										},
+										{
+											"key": "filter[updated_at.1]",
+											"value": ">=2020-01-01",
+											"disabled": true
+										},
+										{
+											"key": "filter[created_at.1]",
+											"value": ">=2020-01-01",
+											"disabled": true
+										},
+										{
+											"key": "filter[last_four.1]",
+											"value": "~~42",
+											"disabled": true
+										},
+										{
+											"key": "filter[expires.1]",
+											"value": "==0224",
+											"disabled": true
+										},
+										{
+											"key": "filter[gateway_provider.1]",
+											"value": "~~Stripe",
+											"disabled": true
+										},
+										{
+											"key": "filter[type.1]",
+											"value": "==VISA,MASTERCARD"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/userBilling/5",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"userBilling",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filters",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/userBilling/filters",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"userBilling",
+										"filters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": 1,\n    \"cardNumber\": \"4242424242424242\",\n    \"cardExpires\": \"05/22\",\n    \"cardCvc\": \"910\",\n    \"nameOnCard\": \"Jonny B\",\n    \"postal\": \"11211\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/userBilling",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"userBilling"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/userBilling/2,3",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"userBilling",
+										"2,3"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e33dc5fc-aff9-4e11-b80c-be5aeab55429",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "75576b3c-84ea-468b-b342-5ee029738ec1",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "User Email",
+					"item": [
+						{
+							"name": "Get All (All Filters)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/userEmail?page=1&size=20&filter[email]=~~jonnyobell&direction=desc&orderBy=email",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"userEmail"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										},
+										{
+											"key": "filter[email]",
+											"value": "~~jonnyobell"
+										},
+										{
+											"key": "filter[created_at]",
+											"value": ">=2020-01-01",
+											"disabled": true
+										},
+										{
+											"key": "filter[updated_at]",
+											"value": ">=2020-01-01",
+											"disabled": true
+										},
+										{
+											"key": "filter[is_confirmed]",
+											"value": "true",
+											"disabled": true
+										},
+										{
+											"key": "filter[is_primary]",
+											"value": "true",
+											"disabled": true
+										},
+										{
+											"key": "direction",
+											"value": "desc"
+										},
+										{
+											"key": "orderBy",
+											"value": "email"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/userEmail/1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"userEmail",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filters",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/userEmail/filters",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"userEmail",
+										"filters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"isPrimary\": false,\n    \"email\": \"jonnyobell+087@gmail.com\",\n    \"userId\": 3\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/userEmail",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"userEmail"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/userEmail/5,6",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"userEmail",
+										"5,6"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "34129f9b-9b4a-4038-8184-020516d75c9e",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "1c928b4a-5624-434f-8eac-a0c08b0344e0",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "User Phone",
+					"item": [
+						{
+							"name": "Get All (All Filters)",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/userPhone?page=1&size=20&filter[phone]=~~630&filter[country_code]===1&direction=desc&orderBy=phone",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"userPhone"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										},
+										{
+											"key": "filter[phone]",
+											"value": "~~630"
+										},
+										{
+											"key": "filter[created_at]",
+											"value": ">=2020-01-01",
+											"disabled": true
+										},
+										{
+											"key": "filter[updated_at]",
+											"value": ">=2020-01-01",
+											"disabled": true
+										},
+										{
+											"key": "filter[country_code]",
+											"value": "==1"
+										},
+										{
+											"key": "filter[is_mobile]",
+											"value": "true",
+											"disabled": true
+										},
+										{
+											"key": "filter[is_confirmed]",
+											"value": "true",
+											"disabled": true
+										},
+										{
+											"key": "filter[is_primary]",
+											"value": "true",
+											"disabled": true
+										},
+										{
+											"key": "direction",
+											"value": "desc"
+										},
+										{
+											"key": "orderBy",
+											"value": "phone"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/userPhone/1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"userPhone",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filters",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/userPhone/filters",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"userPhone",
+										"filters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"countryCode\": 1,\n    \"isMobile\": true,\n    \"isPrimary\": false,\n    \"phone\": 6307061574,\n    \"userId\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/admin/userPhone",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"userPhone"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api}}/admin/userPhone/4,5",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"admin",
+										"userPhone",
+										"4,5"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f38c183e-e7cf-417f-999a-eba94bb3d592",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2ad3f925-5f8c-46c0-b3e7-92abb827a1ef",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Autocomplete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/admin/autocomplete?filter[geo_state]=new&entity=geo_state&filter[geo_city]=new&entity=geo_city&filter[field]=company&entity=field&filter[product]=member&entity=product&filter[source_d]=guest&entity=source_d&filter[type_d]=member&entity=type_d&filter[user]=JoN&entity=user&filter[digital_file]=sample&entity=digital_file",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"admin",
+								"autocomplete"
+							],
+							"query": [
+								{
+									"key": "filter[geo_state]",
+									"value": "new"
+								},
+								{
+									"key": "entity",
+									"value": "geo_state"
+								},
+								{
+									"key": "filter[geo_city]",
+									"value": "new"
+								},
+								{
+									"key": "entity",
+									"value": "geo_city"
+								},
+								{
+									"key": "filter[field]",
+									"value": "company"
+								},
+								{
+									"key": "entity",
+									"value": "field"
+								},
+								{
+									"key": "filter[product]",
+									"value": "member"
+								},
+								{
+									"key": "entity",
+									"value": "product"
+								},
+								{
+									"key": "filter[source_d]",
+									"value": "guest"
+								},
+								{
+									"key": "entity",
+									"value": "source_d"
+								},
+								{
+									"key": "filter[type_d]",
+									"value": "member"
+								},
+								{
+									"key": "entity",
+									"value": "type_d"
+								},
+								{
+									"key": "filter[user]",
+									"value": "JoN"
+								},
+								{
+									"key": "entity",
+									"value": "user"
+								},
+								{
+									"key": "filter[digital_file]",
+									"value": "sample"
+								},
+								{
+									"key": "entity",
+									"value": "digital_file"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/admin/search?q=1ILZX",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"admin",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "1ILZX"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Widgets",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/admin/widget",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"admin",
+								"widget"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Signup Examples",
+					"item": [
+						{
+							"name": "IL - Barchart",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"type": "text",
+										"value": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"barchart\",\n    \"form_id\": 1,\n    \"email\": \"jonnyobell+01@gmail.com\",\n    \"password\": \"Zen1sBack!\",\n    \"repeat_password\": \"Zen1sBack!\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"company_name\": \"Barchart\",\n    \"company_industry\": \"Financial Services\",\n    \"address_line_1\": \"209 W. Jackson Blvd.\",\n    \"address_line_2\": \"2nd Floor\",\n    \"city\": \"Chicago\",\n    \"postal\": \"60606\",\n    \"state\": 3547,\n    \"country\": 240\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/signup",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "NY - Doe",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"type": "text",
+										"value": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"janedoe\",\n    \"form_id\": 1,\n    \"email\": \"jonnyobell+05@gmail.com\",\n    \"password\": \"Zen1sBack!\",\n    \"repeat_password\": \"Zen1sBack!\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"company_name\": \"Easy Lover\",\n    \"company_industry\": \"\",\n    \"address_line_1\": \"790 Metropolitan Ave\",\n    \"address_line_2\": \"\",\n    \"city\": \"Brooklyn\",\n    \"postal\": \"11211\",\n    \"state\": 3566,\n    \"country\": 240\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/signup",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AR - Babe",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"type": "text",
+										"value": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"babe\",\n    \"form_id\": 1,\n    \"email\": \"jonnyobell+02@gmail.com\",\n    \"password\": \"Zen1sBack!\",\n    \"repeat_password\": \"Zen1sBack!\",\n    \"first_name\": \"Alexis\",\n    \"last_name\": \"Whitley\",\n    \"company_industry\": \"Leisure, Travel & Tourism\",\n    \"company_name\": \"Nerd Co\",\n    \"address_line_1\": \"1500 N Mississippi St\",\n    \"address_line_2\": \"\",\n    \"city\": \"Little Rock\",\n    \"postal\": \"72207\",\n    \"state\": 3538,\n    \"country\": 240\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/signup",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ON - Ronny D",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"type": "text",
+										"value": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"ronnyd\",\n    \"form_id\": 1,\n    \"email\": \"jonnyobell+04@gmail.com\",\n    \"password\": \"Zen1sBack!\",\n    \"repeat_password\": \"Zen1sBack!\",\n    \"first_name\": \"Ron\",\n    \"last_name\": \"Dorombozi\",\n    \"company_industry\": \"Defense & Space\",\n    \"company_name\": \"True North Arms\",\n    \"address_line_1\": \"1 Austin Terrace\",\n    \"address_line_2\": \"\",\n    \"city\": \"Toronto\",\n    \"postal\": \"M5R1X8\",\n    \"state\": 449,\n    \"country\": 43,\n    \"phone\": \"6474789325\",\n    \"country_code\": \"1\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/signup",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"signup"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "fa315132-c53d-4a04-af00-6ff5a232acff",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "e5f3a20c-62e7-4c83-aa14-313018358ad4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Auth (login)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2e935703-1138-4c64-bb80-72aa7cc40d2c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "9d28ce4a-356c-4266-9138-76b15f72ec6c",
+								"exec": [
+									"const responseJson = pm.response.json();",
+									"",
+									"if (responseJson.data.details !== undefined) {",
+									"    pm.environment.set('mfa_token', responseJson.data.details);",
+									"} else {",
+									"    pm.environment.set('token', responseJson.data);",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"jonb\",\n    \"password\": \"Zen1sBack!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/auth",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MFA Confirm",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f21ca366-b905-4e3c-a305-50f8baf1758e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "c84a6eed-a6f2-4643-bee4-0e3cf387e965",
+								"exec": [
+									"const responseJson = pm.response.json();",
+									"",
+									"pm.environment.set('token', responseJson.data);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"{{mfa_token}}\",\n    \"code\": \"434717\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/auth/mfa",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"auth",
+								"mfa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/auth/logout",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request Password Reset",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"jonnyobell@gmail.com\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/password/requestReset",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"password",
+								"requestReset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Password Reset",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"Zen1sBack!\",\n    \"repeat_password\": \"Zen1sBack!ee\",\n    \"code\": \"e14cf0e2adec3996fd08\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/password/confirmReset",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"password",
+								"confirmReset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/me",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "User Manage",
+			"item": [
+				{
+					"name": "User: Update Status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"ACTIVE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/user/7/status",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"user",
+								"7",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"ACTIVE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/user/1/email/4",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"user",
+								"1",
+								"email",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Phone",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"ACTIVE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/user/1/phone/1",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"user",
+								"1",
+								"phone",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"Zen1sBack!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/user/1/address/1",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"user",
+								"1",
+								"address",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"jonnyobell3@gmail.com\",\n    \"isPrimary\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/user/1/email",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"user",
+								"1",
+								"email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address_line_1\": \"123 Sesame St\",\n    \"address_line_2\": \"Apt 8\",\n    \"city\": \"New York City\",\n    \"state\": 3566,\n    \"postal\": 11211,\n    \"country\": 240,\n    \"isPrimary\": false,\n    \"type\": \"HOME\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/user/1/address",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"user",
+								"1",
+								"address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Phone",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone\": \"2015037757\",\n    \"countryCode\": \"1\",\n    \"isPrimary\": true,\n    \"isMobile\": true\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/user/1/phone",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"user",
+								"1",
+								"phone"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Phone",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": 666525,\n    \"token\": \"df4ab0f64b989eb393bb\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/user/1/phone/9/confirm",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"user",
+								"1",
+								"phone",
+								"9",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User: Update Data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"Zen1sBack!\",\n    \"email\": \"jonnyobell@gmail.com\",\n    \"fake\": \"123asd\",\n    \"first_name\": \"Jonathan\",\n    \"last_name\": \"Belelieu\",\n    \"status\": \"EXPIRED\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/user/1",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update MFA Type",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mfaType\": \"EMAIL\",\n    \"password\": \"Zen1sBack!\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/user/1/mfa",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"user",
+								"1",
+								"mfa"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Forms",
+			"item": [
+				{
+					"name": "Get Form",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/form/fragment_address",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"form",
+								"fragment_address"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Shop",
+			"item": [
+				{
+					"name": "Start a Shop Session",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "abb2af09-44ea-4e1d-accc-f5f6c80ea053",
+								"exec": [
+									"const responseJson = pm.response.json();",
+									"",
+									"if (responseJson.data.payment_token !== undefined) {",
+									"    pm.environment.set('payment_token', responseJson.data.payment_token);",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/shop/session",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"shop",
+								"session"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Session from payment token",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/shop/session/{{payment_token}}",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"shop",
+								"session",
+								"{{payment_token}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Session from user session",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "61f3b760-d150-465c-b516-f98f521f4a30",
+								"exec": [
+									"const responseJson = pm.response.json();",
+									"",
+									"if (responseJson.data.payment_token !== undefined) {",
+									"    pm.environment.set('payment_token', responseJson.data.payment_token);",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/shop/session",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"shop",
+								"session"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/shop/product/basic_membership",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"shop",
+								"product",
+								"basic_membership"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/shop/products/category",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"shop",
+								"products",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products In Cart",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/shop/cart/{{payment_token}}",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"shop",
+								"cart",
+								"{{payment_token}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cards on File For User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/billing/cardsOnFile",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"billing",
+								"cardsOnFile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apply Coupon Code",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"paymentToken\": \"{{payment_token}}\",\n    \"couponCode\": \"SAVE20\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/shop/applyCoupon",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"shop",
+								"applyCoupon"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Product To Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": \"basic_membership\",\n    \"qty\": 1,\n    \"paymentToken\": \"{{payment_token}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/shop/addToCart",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"shop",
+								"addToCart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pay with new card",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"paymentToken\": \"{{payment_token}}\",\n    \"number\": 4242424242424242,\n    \"name\": \"Jon Belelieu\",\n    \"expiry\": \"0422\",\n    \"cvc\": 911,\n    \"address_line_1\": \"123 Sesame St\",\n    \"address_line_2\": \"Unit 10\",\n    \"city\": \"New York\",\n    \"state\": 3566,\n    \"postal_code\": \"11211\",\n    \"country\": 240,\n    \"email\": \"jonnyobell+03@gmail.com\",\n    \"phone\": 6307061574\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/shop/pay",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"shop",
+								"pay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pay with card on file",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"Zen1sBack!\",\n    \"paymentToken\": \"{{payment_token}}\",\n    \"cardId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/shop/pay/cardOnFile",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"shop",
+								"pay",
+								"cardOnFile"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Invoice",
+			"item": [
+				{
+					"name": "Get Invoice",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/invoice/CASTLAMP-YOURORG-CONSULTING/{{payment_token}}",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"invoice",
+								"CASTLAMP-YOURORG-CONSULTING",
+								"{{payment_token}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Grants",
+			"item": [
+				{
+					"name": "Activate License",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"licenseKey\": \"AZ033-09UA9-4VP23-611I2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/license/activate",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"license",
+								"activate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Determine License Validity",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"licenseKey\": \"AZ033-09UA9-4VP23-611I2\",\n    \"licenseActivationHash\": \"f62a79c4cf.4031fee0f9180ab18780467ccd9fba9e09f0e975\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/license/validate",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"license",
+								"validate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Session Grant History",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"licenseKey\": \"AZ033-09UA9-4VP23-611I2\",\n    \"licenseActivationHash\": \"f62a79c4cf.4031fee0f9180ab18780467ccd9fba9e09f0e975\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/grant/pass",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"grant",
+								"pass"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Issue Session Grant",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"withfusion@gmail.com\",\n    \"firstName\": \"Jonny\",\n    \"lastName\": \"Belelelelieuuuuu\",\n    \"sessionType\": \"IN-PERSON\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/grant/pass",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"grant",
+								"pass"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Revoke Session Grant",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"licenseKey\": \"AZ033-09UA9-4VP23-611I2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/grant/pass/95f87aae-24fd-4a40-8372-b09321eb3762",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"grant",
+								"pass",
+								"95f87aae-24fd-4a40-8372-b09321eb3762"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Redeem Session Grant (ONLINE)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"activationCode\": \"8d7bc39b904b87eb3fd0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/grant/pass/b48d59c8-0839-4761-baed-ffce3e344ce2/redeem",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"grant",
+								"pass",
+								"b48d59c8-0839-4761-baed-ffce3e344ce2",
+								"redeem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Redeem Session Grant (QR CODE)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"activationCode\": \"8d7bc39b904b87eb3fd0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/grant/pass/b48d59c8-0839-4761-baed-ffce3e344ce2/redeem?activationCode=8d7bc39b904b87eb3fd0&isFromScannedQRCode=true",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"grant",
+								"pass",
+								"b48d59c8-0839-4761-baed-ffce3e344ce2",
+								"redeem"
+							],
+							"query": [
+								{
+									"key": "activationCode",
+									"value": "8d7bc39b904b87eb3fd0"
+								},
+								{
+									"key": "isFromScannedQRCode",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Available Number of Guest Passes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"licenseKey\": \"AZ033-09UA9-4VP23-611I2\",\n    \"licenseActivationHash\": \"f62a79c4cf.4031fee0f9180ab18780467ccd9fba9e09f0e975\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/grant/pass",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"grant",
+								"pass"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Source Incoming Tracking",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/source/sample_ad_campaign/track?something=1&anything=2",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"source",
+						"sample_ad_campaign",
+						"track"
+					],
+					"query": [
+						{
+							"key": "something",
+							"value": "1"
+						},
+						{
+							"key": "anything",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

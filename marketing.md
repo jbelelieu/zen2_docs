@@ -57,6 +57,11 @@ Offered on various version of the application.
 Sell > Capture Data > Upsell > Extend (custom hooks make this completely modular an expandable)
 
 
+# Shop
+
+## Offer targeted discounts to specific member groups
+
+
 
 # Monetization
 
