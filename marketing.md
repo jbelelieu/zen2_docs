@@ -62,6 +62,15 @@ Sell > Capture Data > Upsell > Extend (custom hooks make this completely modular
 ## Offer targeted discounts to specific member groups
 
 
+# "No Surprises" Doctrine
+
+- We take a defensive approach to everything, this means we give you control over almost everything, but we won't assume you want something to happen unless you manually trigger it. For example, creating or editing an invoice, we won't email that invoice on creation/change unless oyu manually click to resend the invoice to the user. This adds a little overhead, but at the same time ensures that:
+1. You aren't worrying that comms are going out without your approval,
+2. We can track who did exactly what and when!
+
+
+# Grassroots Articles
+- Write a top ten list with a bunch of open source softwares that do similar things, but put a checkbox next to Zenbership for something slightly unrelated (Best Customer Satisfaction... Best Support... Best One Click Deployments... etc..).
 
 # Monetization
 

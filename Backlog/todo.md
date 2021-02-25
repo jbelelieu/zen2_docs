@@ -14,13 +14,39 @@
 - I can't update ID for an invoice...
     - DTO setId is called when controller passed DTO to service.
 - SMS not working?
+- If a product has a grant in its JSON, and we delete that grant item, it isn't updated. We need to normalize or scan all product grants.
 
 # TODO
+
+## Frontend
+
+- Across the board:
+    1. Loader/disable on form submit,
+    2. Error handling on forms,
+    3. checkSession if required.
+
+## other
+
+- Preset email templates.
+    - Move existing templates to db.
+
+- If I get a grant from a subscription, does it properly "expire_at" when the subscription does?
+
+- On each "create/update" page have an icon set that indicates the effects of doing whatever:
+    - This action will send an email
+    - This action will send an sms
+    - This action will ......etc.....
 
 - TODO: ON ALL RESOURCE SERVICES:
     - Create/Update logic around notifying users.
 
+- Subscription penalties for late payment.
+
 - Source tracking on login!
+
+- Auto-generate SPLASH pages for products when requested.
+
+- Create: anywhere with a userID needs option to flip between create user/existing user.
 
 - Import/Export
 
