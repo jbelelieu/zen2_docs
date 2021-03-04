@@ -57,6 +57,12 @@ Offered on various version of the application.
 Sell > Capture Data > Upsell > Extend (custom hooks make this completely modular an expandable)
 
 
+# Communications
+
+Handle email, sms, or mailers.
+
+Target comms at any subset of users based on your inputs!
+
 # Shop
 
 ## Offer targeted discounts to specific member groups
